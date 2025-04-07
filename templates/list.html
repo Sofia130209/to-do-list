@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='list.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Borel&display=swap"
+      rel="stylesheet"
+    />
+    <title>TO-DO LIST пользователя {{ login }}</title>
+  </head>
+  <body>
+    <h1>TO-DO LIST пользователя {{ login }}</h1>
+    <form action="/list" method="POST">
+      <input
+        id="task"
+        type="text"
+        name="task"
+        placeholder="Введите задачу..."
+      />
+      <button type="submit">Добавить задачу в БД</button>
+    </form>
+
+    <!-- список задач -->
+    <div class="tasks-container">
+      <h2>Ваши задачи:</h2>
+      <ul class="tasks-list">
+        {% if tasks %} {% for task in tasks %}
+        <li class="task-item">
+          {{ task.description }}
+          <form
+            action="{{ url_for('delete_task_route', task_id=task.id) }}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="delete-btn">Выполено</button>
+          </form>
+        </li>
+        {% endfor %} {% else %}
+        <li>Пока нет задач или не удалось загрузить</li>
+        {% endif %}
+      </ul>
+    </div>
+  </body>
+</html>

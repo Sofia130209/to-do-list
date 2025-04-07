@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Вход</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='login.css') }}"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Вход в личный кабинет</h2>
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+      <form action="/" method="POST">
+        <input type="text" name="login" placeholder="Логин" required />
+        <input type="password" name="password" placeholder="Пароль" required />
+        <button type="submit" class="login-button">Войти</button>
+      </form>
+
+      <!-- Кнопка регистрации -->
+      <a href="{{ url_for('register') }}" class="register-button"
+        >Зарегистрироваться</a
+      >
+    </div>
+  </body>
+</html>

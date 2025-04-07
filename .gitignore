@@ -1,0 +1,6 @@
+.qodo
+.env
+.vscode
+data/*.db
+instance/*.db
+.to-do

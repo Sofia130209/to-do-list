@@ -43,7 +43,7 @@ pip install -r requirements.txt
 Before running the app, initialize the database:
 
 ```bash
-python init_bd.py
+python init_db.py
 ```
 
 This will create the necessary database file for storing tasks and users.
